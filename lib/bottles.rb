@@ -1,11 +1,16 @@
 class Bottles
-  def verse(bottle)
-    if bottle>2
-      return "#{bottle} bottles of beer on the wall, #{bottle} bottles of beer.\nTake one down and pass it around, #{bottle-1} bottles of beer on the wall.\n"
+
+  def contianer(number)
+    if(number==1)
+      return "bottle"
     end
 
-    if bottle==2
-      return "2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n"
+    return "bottles"
+  end
+
+  def verse(bottle)
+    if bottle>1
+      return "#{bottle} bottles of beer on the wall, #{bottle} bottles of beer.\nTake one down and pass it around, #{bottle-1} #{contianer (bottle-1)} of beer on the wall.\n"
     end
 
     if bottle==1
