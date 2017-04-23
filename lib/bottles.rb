@@ -1,27 +1,39 @@
 class Bottles
 
-  def contianer(number)
-    if(number==1)
-      return "bottle"
+  def container(number)
+    if (number==1)
+      return 'bottle'
     end
 
-    return "bottles"
+    return 'bottles'
+  end
+
+  def quantity(number)
+    if (number==0)
+      return 'no more'
+    end
+
+    return number
+  end
+
+  def pronoun(number)
+    if (number==1)
+      return 'it'
+    end
+
+    return 'one'
   end
 
   def verse(bottle)
-    if bottle>1
-      return "#{bottle} bottles of beer on the wall, #{bottle} bottles of beer.\nTake one down and pass it around, #{bottle-1} #{contianer (bottle-1)} of beer on the wall.\n"
+    if bottle==0
+      return "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
     end
 
-    if bottle==1
-      return "1 bottle of beer on the wall, 1 bottle of beer.\nTake it down and pass it around, no more bottles of beer on the wall.\n"
-    end
-
-    "No more bottles of beer on the wall, no more bottles of beer.\nGo to the store and buy some more, 99 bottles of beer on the wall.\n"
+    return "#{bottle} #{container (bottle)} of beer on the wall, #{bottle} #{container (bottle)} of beer.\nTake #{pronoun(bottle)} down and pass it around, #{quantity(bottle-1)} #{container (bottle-1)} of beer on the wall.\n"
   end
 
   def verses(starting, ending)
-    starting.downto(ending).map{|bottle| verse(bottle)}.join("\n")
+    starting.downto(ending).map { |bottle| verse(bottle) }.join("\n")
   end
 
   def song
