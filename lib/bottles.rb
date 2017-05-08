@@ -1,43 +1,23 @@
 class Bottles
 
   def container(number)
-    if number==1
-      return 'bottle'
-    end
-
-    return 'bottles'
+    BottleNumber.new(number).container
   end
 
   def quantity(number)
-    if number==0
-      return 'no more'
-    end
-
-    return number.to_s
+    BottleNumber.new(number).quantity
   end
 
   def pronoun(number)
-    if number==1
-      return 'it'
-    end
-
-    return 'one'
+    BottleNumber.new(number).pronoun
   end
 
   def action(number)
-    if number==0
-      return 'Go to the store and buy some more'
-    end
-
-    return "Take #{pronoun(number)} down and pass it around"
+    BottleNumber.new(number).action
   end
 
   def successor(number)
-    if number==0
-      return 99
-    end
-
-    return number-1
+    BottleNumber.new(number).successor
   end
 
   def verse(bottle)
@@ -52,4 +32,52 @@ class Bottles
     verses(99, 0)
   end
 
+end
+
+class BottleNumber
+  attr_reader :number
+
+  def initialize(number)
+    @number = number
+  end
+
+  def container
+    if number==1
+      return 'bottle'
+    end
+
+    return 'bottles'
+  end
+
+  def quantity
+    if number==0
+      return 'no more'
+    end
+
+    return number.to_s
+  end
+
+  def pronoun
+    if number==1
+      return 'it'
+    end
+
+    return 'one'
+  end
+
+  def action
+    if number==0
+      return 'Go to the store and buy some more'
+    end
+
+    return "Take #{pronoun} down and pass it around"
+  end
+
+  def successor
+    if number==0
+      return 99
+    end
+
+    return number-1
+  end
 end
