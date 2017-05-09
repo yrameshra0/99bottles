@@ -21,7 +21,10 @@ class Bottles
   end
 
   def verse(bottle)
-    return "#{quantity(bottle).capitalize} #{container (bottle)} of beer on the wall, #{quantity(bottle)} #{container(bottle)} of beer.\n#{action(bottle)}, #{quantity(successor(bottle))} #{container (bottle-1)} of beer on the wall.\n"
+    return "#{quantity(bottle).capitalize} #{container (bottle)} of beer on the wall, "+
+           "#{quantity(bottle)} #{container(bottle)} of beer.\n"+
+           "#{action(bottle)}, #{quantity(successor(bottle))} "+
+           "#{container (bottle-1)} of beer on the wall.\n"
   end
 
   def verses(starting, ending)
