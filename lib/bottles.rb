@@ -1,30 +1,13 @@
 class Bottles
-
-  def container(number)
-    BottleNumber.new(number).container
-  end
-
-  def quantity(number)
-    BottleNumber.new(number).quantity
-  end
-
-  def pronoun(number)
-    BottleNumber.new(number).pronoun
-  end
-
-  def action(number)
-    BottleNumber.new(number).action
-  end
-
-  def successor(number)
-    BottleNumber.new(number).successor
-  end
-
+  
   def verse(bottle)
-    return "#{quantity(bottle).capitalize} #{container (bottle)} of beer on the wall, "+
-           "#{quantity(bottle)} #{container(bottle)} of beer.\n"+
-           "#{action(bottle)}, #{quantity(successor(bottle))} "+
-           "#{container (bottle-1)} of beer on the wall.\n"
+    bottle_number = BottleNumber.new(bottle)
+    successor_bottle_number = BottleNumber.new(bottle_number.successor)
+
+    return "#{bottle_number.quantity.capitalize} #{bottle_number.container} of beer on the wall, "+
+           "#{bottle_number.quantity} #{bottle_number.container} of beer.\n"+
+           "#{bottle_number.action}, #{successor_bottle_number.quantity} "+
+           "#{successor_bottle_number.container} of beer on the wall.\n"
   end
 
   def verses(starting, ending)
