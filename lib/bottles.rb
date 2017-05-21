@@ -3,8 +3,10 @@ class Bottles
   def verse(bottle)
     bottle_number = BottleNumber.new(bottle)
 
-    return "#{bottle_number.quantity.capitalize} #{bottle_number.container} of beer on the wall, "+
-        "#{bottle_number} of beer.\n#{bottle_number.action}, #{bottle_number.successor} of beer on the wall.\n"
+    return "#{bottle_number} of beer on the wall, ".capitalize +
+        "#{bottle_number} of beer.\n"+
+        "#{bottle_number.action}, "+
+        "#{bottle_number.successor} of beer on the wall.\n"
   end
 
   def verses(starting, ending)
