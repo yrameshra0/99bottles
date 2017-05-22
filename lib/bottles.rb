@@ -1,12 +1,21 @@
 class Bottles
 
+  def new_bottle_number_for(number)
+    if (number==0)
+      BottleNumber0
+    else
+      BottleNumber
+    end.new(number)
+  end
+
   def verse(bottle)
-    bottle_number = BottleNumber.new(bottle)
+    bottle_number = new_bottle_number_for(bottle)
+    next_bottle_number = new_bottle_number_for(bottle_number.successor)
 
     return "#{bottle_number} of beer on the wall, ".capitalize +
         "#{bottle_number} of beer.\n"+
         "#{bottle_number.action}, "+
-        "#{bottle_number.successor} of beer on the wall.\n"
+        "#{next_bottle_number} of beer on the wall.\n"
   end
 
   def verses(starting, ending)
@@ -35,11 +44,7 @@ class BottleNumber
   end
 
   def quantity
-    if number==0
-      return 'no more'
-    end
-
-    return number.to_s
+    number.to_s
   end
 
   def pronoun
@@ -51,22 +56,29 @@ class BottleNumber
   end
 
   def action
-    if number==0
-      return 'Go to the store and buy some more'
-    end
-
-    return "Take #{pronoun} down and pass it around"
+    "Take #{pronoun} down and pass it around"
   end
 
   def successor
-    if number==0
-      return BottleNumber.new(99)
-    end
-
-    return BottleNumber.new(number-1)
+    number-1
   end
 
   def to_s
     "#{quantity} #{container}"
   end
+end
+
+class BottleNumber0<BottleNumber
+  def quantity
+    'no more'
+  end
+
+  def successor
+    99
+  end
+
+  def action
+    return 'Go to the store and buy some more'
+  end
+
 end
