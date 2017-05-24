@@ -1,10 +1,13 @@
 class Bottles
 
   def new_bottle_number_for(number)
-    if (number==0)
-      BottleNumber0
-    else
-      BottleNumber
+    case number
+      when 0
+        BottleNumber0
+      when 1
+        BottleNumber1
+      else
+        BottleNumber
     end.new(number)
   end
 
@@ -36,11 +39,7 @@ class BottleNumber
   end
 
   def container
-    if number==1
-      return 'bottle'
-    end
-
-    return 'bottles'
+    'bottles'
   end
 
   def quantity
@@ -48,11 +47,7 @@ class BottleNumber
   end
 
   def pronoun
-    if number==1
-      return 'it'
-    end
-
-    return 'one'
+    'one'
   end
 
   def action
@@ -78,7 +73,18 @@ class BottleNumber0<BottleNumber
   end
 
   def action
-    return 'Go to the store and buy some more'
+    'Go to the store and buy some more'
+  end
+
+end
+
+class BottleNumber1<BottleNumber
+  def pronoun
+    'it'
+  end
+
+  def container
+    'bottle'
   end
 
 end
